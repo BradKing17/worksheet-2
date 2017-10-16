@@ -20,11 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{62B37FB0-7309-4A68-A67C-5F0C32A3B360}</ProjectGuid>
+    <ProjectGuid>{9AF5AF2E-3E25-4461-BE6D-7ED3B6769BCD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>worksheet2</RootNamespace>
+    <RootNamespace>worksheet22</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
-    <ProjectName>worksheet2.1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -148,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="worksheet2.1.cpp" />
+    <ClCompile Include="worksheet2.2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
