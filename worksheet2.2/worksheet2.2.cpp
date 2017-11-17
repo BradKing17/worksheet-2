@@ -55,6 +55,7 @@ int main()
 			break;
 		}
 	}
+	std::cout << "\n\nPress any key and enter to continue";
 	std::cin >> end;
 	return 0;
 }
