@@ -4,59 +4,130 @@
 #include "stdafx.h"
 #include <iostream>
 #include <fstream>
+#include <ctime>
+
+
 
 int main()
 {
 	//Variables
+	int win_tally = 0;
+	int comp_guess_num = 0;
 	char comp_guess = '\0';
-	char player_guess = '\0';
-	int comp_win_tally = 0;
-	int player_win_tally = 0;
 	char end = '\0';
+	char play_again = 'Y';
 
-	//File handling
-	std::ifstream inFile;
-	inFile.open("RPS.txt");
-	if (!inFile)
+	//Generate computer guess
+	srand(time(NULL));
+
+
+
+	while (play_again == 'Y' || play_again == 'y')
 	{
-		std::cout << "Unable to open file.";
-		exit(1);
-	}
-	inFile >> comp_guess;
+		comp_guess_num = rand() % 3 + 1;
 
-	std::cout << "Please enter your guess: ";
+		if (comp_guess_num == 1)
+		{
+			comp_guess = 'R';
+		}
+		else if (comp_guess_num == 2)
+		{
+			comp_guess = 'P';
+		}
+		else if (comp_guess_num == 3)
+		{
+			comp_guess = 'S';
+		}
+
+		//Play Function
+		win_tally = playTurn(comp_guess);
+
+		std::cout << "\n\nPlay Again?";
+		std::cin >> play_again;
+	}
+
+	return 0;
+}
+
+int playTurn(char computer_value)
+{
+	int win_tally = 0;
+	char player_guess = '\0';
+	
+	std::cout << "\n\nPlease enter your guess: ";
 	std::cin >> player_guess;
 
 	switch (player_guess)
 	{
-		case 'R':
-		case 'r':
+	case 'R':
+	case 'r':
+	{
+		if(computer_value == 'R')
 		{
 			std::cout << "Its a tie!";
-			break;
+			return 0;
 		}
-		case 'P':
-		case 'p':
+		if (computer_value == 'P')
 		{
 			std::cout << "You win";
-			break;
+			return 1;
 		}
-
-		case 'S':
-		case 's':
+		if (computer_value == 'S')
 		{
-			std::cout << "You lose!";
-			break;
+			std::cout << "You Lose";
+			return -1;
 		}
-
-		default:
-		{
-			std::cout << "Invalid input";
-			break;
-		}
+		
+		break;
 	}
-	std::cout << "\n\nPress any key and enter to continue";
-	std::cin >> end;
-	return 0;
+	case 'P':
+	case 'p':
+	{
+		if (computer_value == 'P')
+		{
+			std::cout << "Its a tie!";
+			return 0;
+		}
+		if (computer_value == 'R')
+		{
+			std::cout << "You win";
+			return 1;
+		}
+		if (computer_value == 'S')
+		{
+			std::cout << "You Lose";
+			return -1;
+		}
+
+		break;
+	}
+
+	case 'S':
+	case 's':
+	{
+		if (computer_value == 'S')
+		{
+			std::cout << "Its a tie!";
+			return 0;
+		}
+		if (computer_value == 'S')
+		{
+			std::cout << "You win";
+			return 1;
+		}
+		if (computer_value == 'R')
+		{
+			std::cout << "You Lose";
+			return -1;
+		}
+
+		break;
+	}
+	default:
+	{
+		std::cout << "Invalid input";
+		break;
+	}
+	}
 }
 
